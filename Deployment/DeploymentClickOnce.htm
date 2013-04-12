@@ -1,0 +1,168 @@
+<html xmlns:cm="urn:www.develop.com:terra:courseManifest:v6" xmlns:tm="urn:www.develop.com:terra:tutorialManifest:v1" xmlns:lh="urn:www.develop.com:terra:labHelpers"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><link href="../../../../styles/unity.css&#xD;&#xA;		 " type="text/css" rel="stylesheet"><link href="../../../../styles/dm.css&#xD;&#xA;		 " type="text/css" rel="stylesheet"><script language="javascript" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    function OpenHowTo(url)
+    {
+      window.open(url, "HowTo", "height=500, width=500, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=300, left=300");
+    }
+    function OpenSample(url)
+    {
+      window.open(url, "Sample", "height=400, width=400, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+    function OpenQuiz(url)
+    {
+      window.open(url, "Quiz", "height=400, width=400, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+
+function OpenSolutions(url, relUrl)
+    {
+	  var realURL = relUrl + "/work/" + url;
+      window.open(realURL, "Solution", "height=600, width=800, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+
+    function setupLink(doc)
+    {
+       var link = doc.getElementById("bodyLink");
+       var bName = navigator.appName;
+       if (bName == "Netscape")
+       {
+           link.href="../styles/dm.css";
+           anchors = doc.anchors;
+           for(var i = 0; i < anchors.length; i++)
+           {
+               var href = anchors[i].href.replace("work", "output\\labs\\work");
+               anchors[i].href = href;
+           }
+       }
+    }
+ function expandOrCollapseCodeBlock(id)
+          {
+                var divElem = document.getElementById(id);
+                var parElem = document.getElementById(id + "p");
+                if (divElem.style.display == "inline")
+                {
+                  divElem.style.display = "none";
+                  parElem.innerHTML = "<i>click to show code</i>";
+                }
+                else
+                {
+                  divElem.style.display = "inline";
+                  parElem.innerHTML = "<i>click to hide code</i>";
+                }
+
+          }
+  </script></head><body><table class="layouttable" cellspacing="0" cellpadding="0" border="0" style="border-width:0px;border-collapse:collapse;"><tr valign="Top" style="height:1pt;"><td colspan="2" style="height:20px;"><table class="layouttable" cellspacing="0" cellpadding="0" nowrap="" border="0" style="border-width:0px;width:100%;border-collapse:collapse;"><tr><td class="titlebarLeft" align="Left" valign="Top" colspan="1" style="width:100px;"><img src="../../../../images/graylogo2.gif&#xD;&#xA;				  " alt="
+developmentor - a developer services company				  
+				  " border="0"></td><td class="titlebarRight" nowrap align="Left" valign="Bottom">&nbsp;&nbsp;&nbsp;&nbsp;<i><span class="titlebarText">Essential .NET 2.0</span></i></td></tr><tr><td colspan="2"><div class="titlebarUnder" style="
+                    background-image:url(../../../../images/newback.jpg);
+				  "></div></td></tr></table></td></tr><tr valign="Top"><td valign="Top" colspan="2" style="height:10px;"><table id="_header__tabs" cellspacing="0" cellpadding="0" border="0" style="border-width:0px;width:100%;border-collapse:collapse;"><tr><td nowrap align="Left" valign="Top"><a href="../../../../default.htm&#xD;&#xA;				  "><img src="../../../../images/welcome_unselected.gif&#xD;&#xA;					" border="0"></a><a href="../../../../coursebook.htm&#xD;&#xA;				  "><img src="../../../../images/coursebook_selected.gif&#xD;&#xA;					" border="0"></a></td></tr><tr><td id="_header__submenuCell" style="background-color:#333333;height:26px;"><table width="100%"><tr><td align="left">&nbsp;&nbsp;<a class="titlebarLink" href="../../../../coursebook.htm&#xD;&#xA;				  ">
+				  Modules
+				</a></td><td class="titlebarStatic" align="right"></td></tr></table></td></tr><tr><td style="
+				height:10px;background-image:url(../../../../images/rainbow.jpg);
+				"></td></tr></table></td></tr></table><img src="../../../../images/transplane2.gif&#xD;&#xA;  " class="floatLogo" border="0"><table width="100%" bgcolor="white"><tr><td><DIV CLASS="instructions"><h2>Deployment</h2><h3>Estimated time for completion: 45 minutes</h3><hr><h3>Goals:</h3><ul><li>Deploy assemblies to the Global Assembly Cache (GAC).</li><li>Configure version policy to redirect versions at load-time.</li><li>Configure an application to find assemblies from alternative locations.</li><li>Deploy an application via ClickOnce</li></ul><hr><h3>Overview</h3><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">In this activity you will work with the simple Mandelbrot fractal viewer shown below:</p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><img src="fractalexplorer.jpg"></p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">The goal of this activity is to work with field-replacement and version
+    redirection in a semi-realistic environment. In the screenshot above the actual
+    Mandelbrot rendering is performed by a DLL (<strong>DevelopMentor.Mandelbrot.dll</strong>)
+    which is hosted by the application (<strong>FractalExplorer.exe</strong>).  In this
+    activity you will compile FractalExplorer.exe against version <strong>1.0.0.0</strong>
+    of DevelopMentor.Mandelbrot.dll. This code works, but not all that well.  You will find
+    two additional implementations of DevelopMentor.Mandelbrot.dll that enhance the 
+    basic functionality of 1.0.0.0 (exactly how is left to you to discover).  The goal
+    here is to compile the original application and then swap in different implementations
+    of DevelopMentor.Mandelbrot.dll <strong>without recompiling FractalExplorer.exe!</strong> 
+    This is similar to what you might want to do in a production environment where
+    the FractalExplorer has already been deployed and you want to give users the option
+    of updating to the new library.</p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">The working directory for this exercise is
+       <a href="../../../../work/deployment/" target="new">work\deployment\</a>. There is 
+       very little code in this activity so there's no need for the usual "before" and
+       "after" directories.  Instead you will be experimenting with deployment and
+       config file settings.</p></p><hr><h2> part 1-
+		Getting started</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">First you need to get familiar with the application</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Open <a href="../../../../work/deployment/fractalexplorer.sln" target="new">FractalExplorer.sln</a> in 
+    the <strong>work</strong> directory.  You'll find three projects inside:</p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><strong>DevelopMentor.Fractals.DLL</strong> provides basic math support
+    needed for complex number manipulation.</p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><strong>Mandel1</strong> provides version 1.0 of the mandelbrot
+    rendering functionality. If you examine the project properties you'll
+    see that this project compiles to a DLL named <strong>DevelopMentor.Mandelbrot.dll</strong></p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><strong>FractalExplorer.exe</strong> provides basic window management
+    as well as a dialog box that will display assembly information for all assemblies
+    loaded by the application.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Compile and run <strong>FractalExplorer.exe</strong> as-is.  Open a few child
+    windows and play with them. You may want to use the <strong>Configuration</strong> button
+    to adjust the <strong>MaxIterations</strong> property - higher values will generate more
+    detail, but will take a correspondingly long time.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Now use <strong>File | Deployment Info...</strong> to bring up a dialog box that
+    displays information about the DLLs that FractalExplore.exe depends on. Pay attention to
+    the <strong>Location</strong> and <strong>Codebase</strong> values as well as the <font color="#000058"><code>Expected</code></font>
+    and <font color="#000058"><code>Loaded</code></font> values of the loaded assemblies. The most interesting DLL here
+    is <strong>DevelopMentor.Mandelbrot</strong> which should be selected already.</p></li></ol><hr><h2> part 2-
+		Deploying to the GAC</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">In order to enable easy selection between versions you will now deploy
+  <strong>DevelopMentor.Mandelbrot.dll</strong> to the GAC.</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Bravely try dragging DevelopMentor.Mandelbrot.DLL from the file system to
+    the GAC by dragging it into <strong>c:\windows\assemly</strong> using the shell.  You
+    should get an error saying that the DLL doesn't have a strong name.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    So, you need to give a strong name to the <strong>Mandel1</strong> project. You can do this
+    by selecting <font color="#000058"><code>Mandel1</code></font> in the Solution Explorer and choosing properties (either
+    via right clicking or via the "Properties" button in the upper left of the Solution Explorer).
+    </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    Now go to the "Signing" tab and select the "Sign the Assembly" check box.  Click the corresponding
+    combo box and choose "New...".  This will bring a dialog where you can create a new keyfile; use
+    <strong>keys.snk</strong> as the name. You can protect it with a password if you want, but it's not
+    necessary here.
+    </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    Now try to build the solution. You should see this error:
+    </p><div class="divCodeBlock" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>error CS1577: Assembly generation failed -- Referenced assembly 'DevelopMentor.Fractals' does not have a strong name</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Strongly-named assemblies can only reference other assemblies if they have strong names as well.  So, use
+    the steps outlined above to give a strong name to <font color="#000058"><code>DevelopMentor.Fractals.dll</code></font>.  Note that you
+    do <strong>not</strong> need to use the same keyfile - you can generate a second pair of keys for this 
+    DLL if you like.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    Now you are ready to put <font color="#000058"><code>DevelopMentor.Mandelbrot.DLL</code></font> into the GAC.  Add it to the GAC
+    and run the application, looking at the assembly info.  You should see a very different location and
+    codebase now for the DLL.
+    </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">The application you are
+    running may work now, but in general when you put an assembly in the GAC you should put all dependant
+    assemblies in the GAC as well; otherwise other applications would fail if they didn't have 
+    <font color="#000058"><code>DevelopMentor.Fractals.dll</code></font> in their local directory. Add <font color="#000058"><code>DevelopMentor.Fractals.dll</code></font>
+    to the GAC as well before moving on to the next part.
+    </p></li></ol><hr><h2> part 4-
+		Deploying with ClickOnce</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><strong>ClickOnce</strong> makes it easy to deploy applications in an XCOPY fashion,
+      but allows clients to get auto-downloading and auto-updating as well as integration with
+      the Start Menu and the "Add/Remove Programs" dialog. In this section
+      you will deploy your application via ClickOnce.</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Start by deleting <strong>app.config</strong> so that <strong>FractalExplorer</strong> goes
+      back to using v1.0.0.0 of the Mandelbrot DLL. ClickOnce doesn't support GAC installation, 
+      so version redirection doesn't make sense - if you want a new version of a lib 
+      in your ClickOnce app just publish the new version and clients will download it.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+      Next you need to generate an x.509 (Authenticode) certificate for the project.  This will 
+      be used to sign the <strong>manifest</strong> files used by ClickOnce. You can generate a
+      new test certificate on the <strong>Signing</strong> tab of the project properties. Check
+      the <strong>Sign the ClickOnce manifests</strong> checkbox then click 
+      <strong>Create Test Certificate</strong>. This should generate a new file named
+      <strong>FractalExplorer_TemporaryKey.pfx</strong></p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+      Now use the Publish wizard to do a simple ClickOnce deployment. Start the
+      wizard by choosing <strong>Build | Publish FractalExplorer</strong>.
+      </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">The wizard will suggest a local IIS deployment, just accept the default and 
+      choose <strong>Next &gt; </strong></p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">The second step in the wizard asks <strong>Will the application be available offline?</strong>
+      Go ahead and accept the default (yes) and continue.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Press Finish to kick off the deploy. The application will build
+      and files will be pushed out to a virtual directory called <strong>FractalExplorer</strong>.
+      Once the wizard is done it will launch IE, which should look about like this:</p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><img src="publish.jpg"></p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Open <strong>c:\inetpub\wwwroot\FractalExplorer</strong> and examine the files there. In particular
+      you should look for <strong>FractalExplorer.Application</strong> and 
+      <strong>FractalExplorer.Manifest</strong>. Inspect these files just to get a
+      sense of them (probably the easiest thing to do is to copy the files and give them
+      a <strong>.xml</strong> extension, then view them in IE).</p></li></ol><hr><h2> part 5-
+		Installing ClickOnce Applications on a client
+(optional)
+			</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Now you will see the client side of ClickOnce installation.</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">To install a ClickOnce application you surf to the <strong>application manifest (.application)</strong>
+        file. Since you already have <strong>publish.htm</strong> up you can just click on the <strong>Install</strong>
+        button.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">You should get prompted with a warning that <strong>Publisher cannot be verified</strong>. This is because
+        the app has been signed with a temporary X.509 test certificate and not a "real" certificate.  If you click
+        on <strong>"More Information..."</strong> you should see that the application is asking for FullTrust which is 
+        a bit silly for this application.  Nevertheless you should be able to click "OK" and the app will install and
+        run.  You should also see a new Start menu item that you can use to launch the application. Try closing and 
+        running the application from the start menu.
+        </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+        Verify that the application files were downloaded by looking in 
+        <strong>%userprofile%\Local Settings\Apps</strong>.
+        Can you find your application files?
+        </p></li></ol><hr><h2> part 6-
+		Deploying a new version
+(optional)
+			</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Now that your app is installed and your clients have subscribed you can push out a new
+      version</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Remove the <strong>Mandel1</strong> reference from the  <font color="#000058"><code>FractalExplorer</code></font> project. 
+        Add <strong>Mandel3</strong> to your solution and reference it from FractalExplorer. Run it
+        in the debugger and verify that version 3.0.0.0 runs.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Publish the application again but <strong>do not click "install" on publish.htm</strong>. Instead
+      just run the application from the <strong>Start</strong> menu.  What happens?</p></li></ol><hr><h2> part 7-
+		Uninstalling ClickOnce Applications
+(optional)
+			</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">ClickOnce-deployed applications can be reverted to a previous state or uninstalled from the Control Panel.</p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">ClickOnce-deployed apps can be uninstalled from Control Panel. 
+        Uninstall the application using the familiar <strong>Add or Remove Programs</strong> dialog.  Verify that doing so deletes the files in 
+        <strong>%userprofile%\Local Settings\Apps</strong>.</p></li></ol></DIV></td></tr></table></body></html>

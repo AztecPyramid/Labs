@@ -1,0 +1,774 @@
+<?xml version="1.0" standalone="yes"?>
+<developoly>
+  <xs:schema id="developoly" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="developoly" msdata:IsDataSet="true">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="chances">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="instruction" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="communitychest">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="instruction" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Properties">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" type="xs:int" minOccurs="0" />
+                <xs:element name="colour" type="xs:string" minOccurs="0" />
+                <xs:element name="property" type="xs:string" minOccurs="0" />
+                <xs:element name="price" type="xs:int" minOccurs="0" />
+                <xs:element name="rent" type="xs:int" minOccurs="0" />
+                <xs:element name="onehouserent" type="xs:int" minOccurs="0" />
+                <xs:element name="twohouserent" type="xs:int" minOccurs="0" />
+                <xs:element name="threehouserent" type="xs:int" minOccurs="0" />
+                <xs:element name="fourhouserent" type="xs:int" minOccurs="0" />
+                <xs:element name="hotelrent" type="xs:int" minOccurs="0" />
+                <xs:element name="mortgagevalue" type="xs:int" minOccurs="0" />
+                <xs:element name="housecost" type="xs:int" minOccurs="0" />
+                <xs:element name="hotelcost" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <chances>
+    <id>1</id>
+    <instruction>Advance to Go (Collect 200)</instruction>
+  </chances>
+  <chances>
+    <id>2</id>
+    <instruction>Advance to Trafalgar Square</instruction>
+  </chances>
+  <chances>
+    <id>3</id>
+    <instruction>Advance to Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.</instruction>
+  </chances>
+  <chances>
+    <id>4</id>
+    <instruction>Advance to nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.</instruction>
+  </chances>
+  <chances>
+    <id>5</id>
+    <instruction>Advance to nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.</instruction>
+  </chances>
+  <chances>
+    <id>6</id>
+    <instruction>Advance to Whitehall. If you pass Go, collect 200</instruction>
+  </chances>
+  <chances>
+    <id>7</id>
+    <instruction>Bank pays you dividend of 50</instruction>
+  </chances>
+  <chances>
+    <id>8</id>
+    <instruction>Get out of Jail free. This card may be kept until needed, or sold</instruction>
+  </chances>
+  <chances>
+    <id>9</id>
+    <instruction>Go back 3 spaces</instruction>
+  </chances>
+  <chances>
+    <id>10</id>
+    <instruction>Go directly to Jail, do not pass Go, do not collect 200</instruction>
+  </chances>
+  <chances>
+    <id>11</id>
+    <instruction>Make general repairs on all your property. For each house pay 25. For each hotel pay 100</instruction>
+  </chances>
+  <chances>
+    <id>12</id>
+    <instruction>Pay poor tax of 15</instruction>
+  </chances>
+  <chances>
+    <id>13</id>
+    <instruction>Advance to Kings Cross Station. If you pass Go collect 200</instruction>
+  </chances>
+  <chances>
+    <id>14</id>
+    <instruction>Advance to Mayfair</instruction>
+  </chances>
+  <chances>
+    <id>15</id>
+    <instruction>You have been elected chairman of the board. Pay each player 50</instruction>
+  </chances>
+  <chances>
+    <id>16</id>
+    <instruction>Your building and loan matures. Collect 150</instruction>
+  </chances>
+  <communitychest>
+    <id>1</id>
+    <instruction>Advance to Go (Collect 200)</instruction>
+  </communitychest>
+  <communitychest>
+    <id>10</id>
+    <instruction>Pay hospital 100</instruction>
+  </communitychest>
+  <communitychest>
+    <id>11</id>
+    <instruction>Pay school tax of 150</instruction>
+  </communitychest>
+  <communitychest>
+    <id>12</id>
+    <instruction>Receive for services 25</instruction>
+  </communitychest>
+  <communitychest>
+    <id>13</id>
+    <instruction>Christmas fund matures. Collect 100</instruction>
+  </communitychest>
+  <communitychest>
+    <id>14</id>
+    <instruction>You are assessed for street repairs.  Pay 40 per house and 115 per hotel</instruction>
+  </communitychest>
+  <communitychest>
+    <id>15</id>
+    <instruction>You have won second prize in a beauty contest.  Collect 10</instruction>
+  </communitychest>
+  <communitychest>
+    <id>16</id>
+    <instruction>You inherit 100</instruction>
+  </communitychest>
+  <communitychest>
+    <id>2</id>
+    <instruction>Bank error in your favor. Collect 200</instruction>
+  </communitychest>
+  <communitychest>
+    <id>3</id>
+    <instruction>Doctors fee. Pay 50</instruction>
+  </communitychest>
+  <communitychest>
+    <id>4</id>
+    <instruction>From sale of stock you get 45</instruction>
+  </communitychest>
+  <communitychest>
+    <id>5</id>
+    <instruction>Get out of Jail free. This card may be kept until needed, or sold</instruction>
+  </communitychest>
+  <communitychest>
+    <id>6</id>
+    <instruction>Go to Jail.  go directly to Jail. Do not pass Go, do not collect 200</instruction>
+  </communitychest>
+  <communitychest>
+    <id>7</id>
+    <instruction>Grand opera opening. Collect 50 from every player for opening night seats</instruction>
+  </communitychest>
+  <communitychest>
+    <id>8</id>
+    <instruction>Income tax refund. Collect 20</instruction>
+  </communitychest>
+  <communitychest>
+    <id>9</id>
+    <instruction>Life insurance matures. collect 100</instruction>
+  </communitychest>
+  <Properties>
+    <id>0</id>
+    <colour>none      </colour>
+    <property>GO</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>1</id>
+    <colour>purple    </colour>
+    <property>Old Kent Road</property>
+    <price>60</price>
+    <rent>2</rent>
+    <onehouserent>10</onehouserent>
+    <twohouserent>30</twohouserent>
+    <threehouserent>90</threehouserent>
+    <fourhouserent>160</fourhouserent>
+    <hotelrent>250</hotelrent>
+    <mortgagevalue>30</mortgagevalue>
+    <housecost>50</housecost>
+    <hotelcost>50</hotelcost>
+  </Properties>
+  <Properties>
+    <id>2</id>
+    <colour>none      </colour>
+    <property>Community Chest</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>3</id>
+    <colour>purple    </colour>
+    <property>Whitechapel Road</property>
+    <price>60</price>
+    <rent>4</rent>
+    <onehouserent>20</onehouserent>
+    <twohouserent>60</twohouserent>
+    <threehouserent>180</threehouserent>
+    <fourhouserent>320</fourhouserent>
+    <hotelrent>450</hotelrent>
+    <mortgagevalue>30</mortgagevalue>
+    <housecost>50</housecost>
+    <hotelcost>50</hotelcost>
+  </Properties>
+  <Properties>
+    <id>4</id>
+    <colour>none      </colour>
+    <property>Income Tax  Pay 200</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>5</id>
+    <colour>white     </colour>
+    <property>Kings Cross Station</property>
+    <price>200</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>6</id>
+    <colour>paleblue  </colour>
+    <property>The Angel Islington</property>
+    <price>100</price>
+    <rent>6</rent>
+    <onehouserent>30</onehouserent>
+    <twohouserent>90</twohouserent>
+    <threehouserent>270</threehouserent>
+    <fourhouserent>400</fourhouserent>
+    <hotelrent>450</hotelrent>
+    <mortgagevalue>50</mortgagevalue>
+    <housecost>50</housecost>
+    <hotelcost>50</hotelcost>
+  </Properties>
+  <Properties>
+    <id>7</id>
+    <colour>none      </colour>
+    <property>Chance</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>8</id>
+    <colour>paleblue  </colour>
+    <property>Euston Road</property>
+    <price>100</price>
+    <rent>6</rent>
+    <onehouserent>30</onehouserent>
+    <twohouserent>90</twohouserent>
+    <threehouserent>270</threehouserent>
+    <fourhouserent>400</fourhouserent>
+    <hotelrent>550</hotelrent>
+    <mortgagevalue>50</mortgagevalue>
+    <housecost>50</housecost>
+    <hotelcost>50</hotelcost>
+  </Properties>
+  <Properties>
+    <id>9</id>
+    <colour>paleblue  </colour>
+    <property>Pentonville Road</property>
+    <price>120</price>
+    <rent>8</rent>
+    <onehouserent>40</onehouserent>
+    <twohouserent>100</twohouserent>
+    <threehouserent>300</threehouserent>
+    <fourhouserent>450</fourhouserent>
+    <hotelrent>600</hotelrent>
+    <mortgagevalue>60</mortgagevalue>
+    <housecost>50</housecost>
+    <hotelcost>50</hotelcost>
+  </Properties>
+  <Properties>
+    <id>10</id>
+    <colour>none      </colour>
+    <property>In Jail &amp; Just Visiting</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>11</id>
+    <colour>pink      </colour>
+    <property>Pall Mall</property>
+    <price>140</price>
+    <rent>10</rent>
+    <onehouserent>50</onehouserent>
+    <twohouserent>150</twohouserent>
+    <threehouserent>450</threehouserent>
+    <fourhouserent>625</fourhouserent>
+    <hotelrent>750</hotelrent>
+    <mortgagevalue>70</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>12</id>
+    <colour>white     </colour>
+    <property>Electric Company</property>
+    <price>150</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>13</id>
+    <colour>pink      </colour>
+    <property>Whitehall</property>
+    <price>140</price>
+    <rent>10</rent>
+    <onehouserent>50</onehouserent>
+    <twohouserent>150</twohouserent>
+    <threehouserent>450</threehouserent>
+    <fourhouserent>625</fourhouserent>
+    <hotelrent>750</hotelrent>
+    <mortgagevalue>70</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>14</id>
+    <colour>pink      </colour>
+    <property>Northumberland Avenue</property>
+    <price>160</price>
+    <rent>12</rent>
+    <onehouserent>60</onehouserent>
+    <twohouserent>180</twohouserent>
+    <threehouserent>500</threehouserent>
+    <fourhouserent>700</fourhouserent>
+    <hotelrent>900</hotelrent>
+    <mortgagevalue>80</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>15</id>
+    <colour>white     </colour>
+    <property>Marylebone Station</property>
+    <price>200</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>16</id>
+    <colour>orange    </colour>
+    <property>Bow Street</property>
+    <price>180</price>
+    <rent>14</rent>
+    <onehouserent>70</onehouserent>
+    <twohouserent>200</twohouserent>
+    <threehouserent>550</threehouserent>
+    <fourhouserent>750</fourhouserent>
+    <hotelrent>950</hotelrent>
+    <mortgagevalue>90</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>17</id>
+    <colour>none      </colour>
+    <property>Community Chest</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>18</id>
+    <colour>orange    </colour>
+    <property>Marlborough Street</property>
+    <price>180</price>
+    <rent>14</rent>
+    <onehouserent>70</onehouserent>
+    <twohouserent>200</twohouserent>
+    <threehouserent>550</threehouserent>
+    <fourhouserent>750</fourhouserent>
+    <hotelrent>950</hotelrent>
+    <mortgagevalue>90</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>19</id>
+    <colour>orange    </colour>
+    <property>Vine Street</property>
+    <price>200</price>
+    <rent>16</rent>
+    <onehouserent>80</onehouserent>
+    <twohouserent>220</twohouserent>
+    <threehouserent>600</threehouserent>
+    <fourhouserent>800</fourhouserent>
+    <hotelrent>1000</hotelrent>
+    <mortgagevalue>110</mortgagevalue>
+    <housecost>100</housecost>
+    <hotelcost>100</hotelcost>
+  </Properties>
+  <Properties>
+    <id>20</id>
+    <colour>none      </colour>
+    <property>Free Parking</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>21</id>
+    <colour>red       </colour>
+    <property>Strand</property>
+    <price>220</price>
+    <rent>18</rent>
+    <onehouserent>90</onehouserent>
+    <twohouserent>250</twohouserent>
+    <threehouserent>700</threehouserent>
+    <fourhouserent>875</fourhouserent>
+    <hotelrent>1050</hotelrent>
+    <mortgagevalue>110</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>22</id>
+    <colour>none      </colour>
+    <property>Chance</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>23</id>
+    <colour>red       </colour>
+    <property>Fleet Street</property>
+    <price>220</price>
+    <rent>18</rent>
+    <onehouserent>90</onehouserent>
+    <twohouserent>250</twohouserent>
+    <threehouserent>700</threehouserent>
+    <fourhouserent>875</fourhouserent>
+    <hotelrent>1050</hotelrent>
+    <mortgagevalue>110</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>24</id>
+    <colour>red       </colour>
+    <property>Trafalgar Square</property>
+    <price>240</price>
+    <rent>20</rent>
+    <onehouserent>100</onehouserent>
+    <twohouserent>300</twohouserent>
+    <threehouserent>750</threehouserent>
+    <fourhouserent>925</fourhouserent>
+    <hotelrent>1100</hotelrent>
+    <mortgagevalue>120</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>25</id>
+    <colour>white     </colour>
+    <property>Fenchurch St Station</property>
+    <price>200</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>26</id>
+    <colour>yellow    </colour>
+    <property>Leicester Square</property>
+    <price>260</price>
+    <rent>22</rent>
+    <onehouserent>110</onehouserent>
+    <twohouserent>330</twohouserent>
+    <threehouserent>800</threehouserent>
+    <fourhouserent>975</fourhouserent>
+    <hotelrent>1150</hotelrent>
+    <mortgagevalue>130</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>27</id>
+    <colour>yellow    </colour>
+    <property>Coventry Street</property>
+    <price>260</price>
+    <rent>22</rent>
+    <onehouserent>110</onehouserent>
+    <twohouserent>330</twohouserent>
+    <threehouserent>800</threehouserent>
+    <fourhouserent>975</fourhouserent>
+    <hotelrent>1150</hotelrent>
+    <mortgagevalue>130</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>28</id>
+    <colour>wihte     </colour>
+    <property>Water Works</property>
+    <price>150</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>29</id>
+    <colour>yellow    </colour>
+    <property>Piccadilly</property>
+    <price>280</price>
+    <rent>24</rent>
+    <onehouserent>120</onehouserent>
+    <twohouserent>360</twohouserent>
+    <threehouserent>850</threehouserent>
+    <fourhouserent>1025</fourhouserent>
+    <hotelrent>1200</hotelrent>
+    <mortgagevalue>140</mortgagevalue>
+    <housecost>150</housecost>
+    <hotelcost>150</hotelcost>
+  </Properties>
+  <Properties>
+    <id>30</id>
+    <colour>none      </colour>
+    <property>Go To Jail</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>31</id>
+    <colour>green     </colour>
+    <property>Regent Street</property>
+    <price>300</price>
+    <rent>26</rent>
+    <onehouserent>130</onehouserent>
+    <twohouserent>190</twohouserent>
+    <threehouserent>900</threehouserent>
+    <fourhouserent>1100</fourhouserent>
+    <hotelrent>1275</hotelrent>
+    <mortgagevalue>150</mortgagevalue>
+    <housecost>200</housecost>
+    <hotelcost>200</hotelcost>
+  </Properties>
+  <Properties>
+    <id>32</id>
+    <colour>green     </colour>
+    <property>Oxford Street</property>
+    <price>300</price>
+    <rent>26</rent>
+    <onehouserent>130</onehouserent>
+    <twohouserent>390</twohouserent>
+    <threehouserent>900</threehouserent>
+    <fourhouserent>1100</fourhouserent>
+    <hotelrent>1275</hotelrent>
+    <mortgagevalue>150</mortgagevalue>
+    <housecost>200</housecost>
+    <hotelcost>200</hotelcost>
+  </Properties>
+  <Properties>
+    <id>33</id>
+    <colour>none      </colour>
+    <property>Community Chest</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>34</id>
+    <colour>green     </colour>
+    <property>Bond Street</property>
+    <price>320</price>
+    <rent>28</rent>
+    <onehouserent>150</onehouserent>
+    <twohouserent>450</twohouserent>
+    <threehouserent>1000</threehouserent>
+    <fourhouserent>1200</fourhouserent>
+    <hotelrent>1400</hotelrent>
+    <mortgagevalue>160</mortgagevalue>
+    <housecost>200</housecost>
+    <hotelcost>200</hotelcost>
+  </Properties>
+  <Properties>
+    <id>35</id>
+    <colour>white     </colour>
+    <property>Liverpool St Station</property>
+    <price>200</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>36</id>
+    <colour>none      </colour>
+    <property>Chance</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>37</id>
+    <colour>blue      </colour>
+    <property>Park Lane</property>
+    <price>350</price>
+    <rent>35</rent>
+    <onehouserent>175</onehouserent>
+    <twohouserent>500</twohouserent>
+    <threehouserent>1100</threehouserent>
+    <fourhouserent>1300</fourhouserent>
+    <hotelrent>1500</hotelrent>
+    <mortgagevalue>175</mortgagevalue>
+    <housecost>200</housecost>
+    <hotelcost>200</hotelcost>
+  </Properties>
+  <Properties>
+    <id>38</id>
+    <colour>none      </colour>
+    <property>Super Tax Pay 100</property>
+    <price>0</price>
+    <rent>0</rent>
+    <onehouserent>0</onehouserent>
+    <twohouserent>0</twohouserent>
+    <threehouserent>0</threehouserent>
+    <fourhouserent>0</fourhouserent>
+    <hotelrent>0</hotelrent>
+    <mortgagevalue>0</mortgagevalue>
+    <housecost>0</housecost>
+    <hotelcost>0</hotelcost>
+  </Properties>
+  <Properties>
+    <id>39</id>
+    <colour>blue      </colour>
+    <property>Mayfair</property>
+    <price>400</price>
+    <rent>50</rent>
+    <onehouserent>200</onehouserent>
+    <twohouserent>600</twohouserent>
+    <threehouserent>1400</threehouserent>
+    <fourhouserent>1700</fourhouserent>
+    <hotelrent>2000</hotelrent>
+    <mortgagevalue>200</mortgagevalue>
+    <housecost>200</housecost>
+    <hotelcost>200</hotelcost>
+  </Properties>
+</developoly>

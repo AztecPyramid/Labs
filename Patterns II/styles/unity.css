@@ -1,0 +1,179 @@
+.codeFrag {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Lucinda-Console; TEXT-DECORATION: none
+}
+.text9 {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+P {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.crumbs {
+	FONT-SIZE: 10px; COLOR: #ff6600; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.secondarynav {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.secondlevelmenu {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.question {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.formtext {
+	FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.text {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.coursetitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.formtext_boldwhite {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.formtextw {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #cc6600; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.textbold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.formtext_underline {
+	FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.textsmall {
+	FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.textmediumsmall {
+	FONT-SIZE: 9px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.textsmallwhite {
+	FONT-SIZE: 10px; COLOR: white; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+TD .data {
+	BACKGROUND-COLOR: #999966
+}
+.data1 {
+	BACKGROUND-COLOR: #666666; TEXT-ALIGN: center
+}
+.formtextbold {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.data2 {
+	BACKGROUND-IMAGE: url(images/side_question_back.gif); TEXT-ALIGN: center
+}
+.textsmallbold {
+	FONT-WEIGHT: 600; FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TR {
+	
+}
+TR .feedback {
+	BACKGROUND-COLOR: #f6f6ef
+}
+TD {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+TD .trainfeature {
+	BACKGROUND-COLOR: #d89850
+}
+TD .trainoffering {
+	BACKGROUND-COLOR: #999999
+}
+TD .trainnew {
+	BACKGROUND-COLOR: #cc6600
+}
+TD .homenew {
+	BACKGROUND-COLOR: #989868
+}
+A:link .small {
+	FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.courselisttitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TR .about2 {
+	BACKGROUND-COLOR: #6599b5
+}
+TR .about {
+	BACKGROUND-COLOR: #3399cc
+}
+.textreallysmall {
+	FONT-SIZE: 8px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:link .reallysmall {
+	FONT-SIZE: 8px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:visited .reallysmall {
+	FONT-SIZE: 8px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:link .strong {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+A:visited .strong {
+	FONT-WEIGHT: 600; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TR .grey {
+	BACKGROUND-COLOR: #999999
+}
+.titlewhite {
+	FONT-SIZE: 20px; COLOR: white; FONT-FAMILY: Arial, helvetica, sans-serif
+}
+.textwhite {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: white; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.training {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #e5b27f; TEXT-DECORATION: none
+}
+.genxorange {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #d78c01; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+.choose {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #b2ccb2; TEXT-DECORATION: none
+}
+.genx {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #99cce5; TEXT-DECORATION: none
+}
+.genxblue {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #3399cc; TEXT-DECORATION: none
+}
+.conferences {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #b2997f; TEXT-DECORATION: none
+}
+.book {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #99b27f; TEXT-DECORATION: none
+}
+.about {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: black; FONT-FAMILY: Arial; BACKGROUND-COLOR: #c96929; TEXT-DECORATION: none
+}
+UL {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.imageborder {
+	BORDER-RIGHT: black thin solid; BORDER-TOP: black thin solid; BORDER-LEFT: black thin solid; BORDER-BOTTOM: black thin solid
+}
+
+.errormessage
+{
+	font-size: 12px;
+	color: red;
+	font-family: Arial;
+}
+
+.telluswhy
+{
+	font-weight: bold; 
+}
+
+.InfoText
+{
+	color:white
+}

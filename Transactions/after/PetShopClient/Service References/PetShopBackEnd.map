@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceReference>
+	<ProxyGenerationParameters
+		ServiceReferenceUri="http://localhost:9000/Services/PetShop"
+		Name="PetShopBackEnd"
+		NotifyPropertyChange="True"
+		UseObservableCollection="False">
+	</ProxyGenerationParameters>
+	<EndPoints>
+		<EndPoint
+			Address="http://localhost:9000/Services/PetShop"
+			BindingConfiguration="WSHttpBinding_PetShopServiceContract"
+			Contract="PetShopClient.PetShopBackEnd.PetShopServiceContract"
+			>
+		</EndPoint>
+	</EndPoints>
+</ServiceReference>

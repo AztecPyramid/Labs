@@ -1,0 +1,295 @@
+<html xmlns:cm="urn:www.develop.com:terra:courseManifest:v6" xmlns:tm="urn:www.develop.com:terra:tutorialManifest:v1" xmlns:lh="urn:www.develop.com:terra:labHelpers"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><link href="styles/unity.css&#xD;&#xA;		 " type="text/css" rel="stylesheet"><link href="styles/dm.css&#xD;&#xA;		 " type="text/css" rel="stylesheet"><script language="javascript" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+    function OpenHowTo(url)
+    {
+      window.open(url, "HowTo", "height=500, width=500, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=300, left=300");
+    }
+    function OpenSample(url)
+    {
+      window.open(url, "Sample", "height=400, width=400, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+    function OpenQuiz(url)
+    {
+      window.open(url, "Quiz", "height=400, width=400, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+
+function OpenSolutions(url, relUrl)
+    {
+	  var realURL = relUrl + "/work/" + url;
+      window.open(realURL, "Solution", "height=600, width=800, resizable=yes, scrollbars=yes, toolbar=no, status=no, menubar=no, top=150, left=150");
+    }
+
+    function setupLink(doc)
+    {
+       var link = doc.getElementById("bodyLink");
+       var bName = navigator.appName;
+       if (bName == "Netscape")
+       {
+           link.href="../styles/dm.css";
+           anchors = doc.anchors;
+           for(var i = 0; i < anchors.length; i++)
+           {
+               var href = anchors[i].href.replace("work", "output\\labs\\work");
+               anchors[i].href = href;
+           }
+       }
+    }
+ function expandOrCollapseCodeBlock(id)
+          {
+                var divElem = document.getElementById(id);
+                var parElem = document.getElementById(id + "p");
+                if (divElem.style.display == "inline")
+                {
+                  divElem.style.display = "none";
+                  parElem.innerHTML = "<i>click to show code</i>";
+                }
+                else
+                {
+                  divElem.style.display = "inline";
+                  parElem.innerHTML = "<i>click to hide code</i>";
+                }
+
+          }
+  </script></head><body><table class="layouttable" cellspacing="0" cellpadding="0" border="0" style="border-width:0px;border-collapse:collapse;"><tr valign="Top" style="height:1pt;"><td colspan="2" style="height:20px;"><table class="layouttable" cellspacing="0" cellpadding="0" nowrap="" border="0" style="border-width:0px;width:100%;border-collapse:collapse;"><tr><td class="titlebarLeft" align="Left" valign="Top" colspan="1" style="width:100px;"><img src="images/graylogo2.gif&#xD;&#xA;				  " alt="
+developmentor - a developer services company				  
+				  " border="0"></td><td class="titlebarRight" nowrap align="Left" valign="Bottom">&nbsp;&nbsp;&nbsp;&nbsp;<i><span class="titlebarText">Architecture and Design with .NET</span></i></td></tr><tr><td colspan="2"><div class="titlebarUnder" style="
+                    background-image:url(images/newback.jpg);
+				  "></div></td></tr></table></td></tr><tr valign="Top"><td valign="Top" colspan="2" style="height:10px;"><table id="_header__tabs" cellspacing="0" cellpadding="0" border="0" style="border-width:0px;width:100%;border-collapse:collapse;"><tr><td nowrap align="Left" valign="Top"><a href="../../default.htm&#xD;&#xA;				  "><img src="images/welcome_unselected.gif&#xD;&#xA;					" border="0"></a><a href="../../coursebook.htm&#xD;&#xA;				  "><img src="images/coursebook_selected.gif&#xD;&#xA;					" border="0"></a></td></tr><tr><td id="_header__submenuCell" style="background-color:#333333;height:26px;"><table width="100%"><tr><td align="left">&nbsp;&nbsp;<a class="titlebarLink" href="../../coursebook.htm&#xD;&#xA;				  ">
+				  Modules
+				</a></td><td class="titlebarStatic" align="right"></td></tr></table></td></tr><tr><td style="
+				height:10px;background-image:url(images/rainbow.jpg);
+				"></td></tr></table></td></tr></table><img src="images/transplane2.gif&#xD;&#xA;  " class="floatLogo" border="0"><table width="100%" bgcolor="white"><tr><td><DIV CLASS="instructions"><h2>State Pattern</h2><h3>Estimated time for completion: 60 minutes</h3><hr><h3>Goals:</h3><ul><li>Develop and put to use the State pattern</li></ul><hr><h3>Overview</h3><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+      This lab comprises of two exercises the first will be to implement a very simple finite state machine using the state pattern, the second part will be taking a more complex example where code has already been written not using the state pattern but simple if/else your task here will be to refactor the code to use the state pattern.
+    </p></p><hr><h2> part 1-
+		Create a simple Finite State Machine</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">For this part you will create a simple type and make use of a finite state machine that simply has two states: Editing and Viewing.  The client will only be able to change the state of the object when the object is in its edit state.  </p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Load the <a href="before\EditablePerson" target="new">EditablePerson Solution</a>, familiarize yourself with the code and run it.  As you can see there is an <font color="#000058"><code>Edit</code></font> and a <font color="#000058"><code>Commit</code></font> method that contain no implementation. These methods are intended to be used by the client when it wishes to change the state of the <font color="#000058"><code>Person</code></font>. By first calling Edit this will allow the client to perform an update, for example changing the Name or Age, when they are done the client calls commit and the object returns back to a readonly/view state.  Currently the code does not enforce this rule. Your job is to make it do this. One way would be to simply have a Boolean that defines if you are in edit mode or not, whilst this would work you are going to use the state pattern.
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            The first step in making this code use the state pattern is to define an abstract class to represent the various states an object can be in, and all the possible state based operations. These operations include the Name and Age Property accessors and the <font color="#000058"><code>Edit</code></font> and <font color="#000058"><code>Commit</code></font> methods. (You will not worry about <font color="#000058"><code>ToString()</code></font> as it has the same behavior in all states).  You want this state base class to be only visible to the <font color="#000058"><code>Person</code></font> type. To do this you will make it an inner class of the <font color="#000058"><code>Person</code></font> type. You should define the inner class in a separate file. To do that make the <font color="#000058"><code>Person</code></font> class a partial class, then, in a separate file, define the abstract state class wrapping it in a partial <font color="#000058"><code>Person</code></font> class definition.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            This makes the code more maintainable by having each (inner) class defined in its own file.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            The code should look like this:
+          </p><div class="divCodeBlock" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public partial class Person
+{
+	private abstract class PersonState
+	{
+        protected Person innerPerson;
+
+        protected PersonState(Person person)
+        {
+            innerPerson = person;
+        }
+
+        public virtual string Name
+        {
+            get {throw new InvalidOperationException("Get Name not supported at this time");}
+            set {throw new InvalidOperationException("Set Name not supported at this time");}
+        }
+
+        public virtual int Age
+        {
+            get { throw new InvalidOperationException("Get Age is not supported at this time"); }
+            set { throw new InvalidOperationException("Set Age is not supported at this time"); }
+        }
+
+        public virtual void Edit()
+        {
+            throw new InvalidOperationException("Edit  is not supported at this time");
+        }
+
+        public virtual void Commit()
+        {
+            throw new InvalidOperationException("Commit is not supported at this time");
+        }
+    }
+}</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">Notice that you have added a constructor that takes a reference to a <font color="#000058"><code>Person</code></font>, whilst inner classes have access to the private parts of their parent they do need to be given a reference to their parent.</p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now let's refactor the Person class to delegate all requests to a state as opposed to implementing it directly inside the class.  To do this, add a new private field to the <font color="#000058"><code>Person</code></font> class to hold the current state: <font color="#000058"><code>private PersonState currentState=null</code></font>.  Change each method/property accessor to now call the equivalent method on the  <font color="#000058"><code>currentState</code></font> reference
+          </p><p id="EAFBBAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EAFBBAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EAFBBAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>partial class Person
+{
+    private PersonState currentState;
+
+    public Person()
+    {
+        currentState = null;
+    }
+
+    private string name;
+
+    public string Name
+    {
+        get { return currentState.Name; }
+        set { currentState.Name = value; }
+    }
+
+    private int age;
+
+    public int Age
+    {
+        get { return currentState.Age; }
+        set { currentState.Age = value; }
+    }
+
+    public override string ToString()
+    {
+        return String.Format("{0}, Aged {1} years", name, age);
+    }
+
+    public void Edit()
+    {
+        currentState.Edit();
+    }
+
+    public void Commit()
+    {
+        currentState.Commit();
+    }
+}</pre></div></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now create two additional inner classes that derive from PersonState one to represent  EditState and one to represent ViewState.  Don't implement any methods simply create the types.  You will however have to add a constructor so that you can initialize the reference to the parent.
+          </p><p id="EAEBBAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EAEBBAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EAEBBAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public partial class Person
+{
+	private class EditState : PersonState
+	{
+		public EditState(Person person) : base(person)    {   }
+	}
+}</pre></div></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Once you have created the two state classes <font color="#000058"><code>Edit</code></font> and <font color="#000058"><code>View</code></font>, you now need to modify the <font color="#000058"><code>Person</code></font> class again to hold references to instances of these states
+          </p><p id="EDDBBAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EDDBBAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EDDBBAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>partial class Person
+{
+	private PersonState currentState;
+	private PersonState editState;
+	private PersonState viewState;
+
+	public Person()
+	{
+		editState = new EditState(this);
+		viewState = new ViewState(this);
+	}
+...</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now add an additional method to the <font color="#000058"><code>Person</code></font> class called <font color="#000058"><code>SetState</code></font>, this will take a new <font color="#000058"><code>PersonState</code></font> as a parameter, and will change the current state of the <font color="#000058"><code>Person</code></font> object to a new state.  This will be called by any operation that results in a state change.
+          </p><p id="EBDBBAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EBDBBAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EBDBBAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>private void SetState(PersonState newState)
+{
+	currentState = newState;
+}</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Modify the <font color="#000058"><code>Person</code></font> constructor to call <font color="#000058"><code>SetState</code></font> with the initial state, <font color="#000058"><code>SetState(viewState);</code></font></p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now implement the appropriate methods for the <font color="#000058"><code>EditState</code></font> and <font color="#000058"><code>ViewState</code></font> types.  The <font color="#000058"><code>EditState</code></font> type should implement the <font color="#000058"><code>Name</code></font> and <font color="#000058"><code>Age</code></font> properties along with the <font color="#000058"><code>Commit</code></font> method, the <font color="#000058"><code>ViewState</code></font> type should implement get accessors for <font color="#000058"><code>Name</code></font> and <font color="#000058"><code>Age</code></font> properties and the <font color="#000058"><code>Edit</code></font> method.  If you now re-run the project it should fail at run time as you are attempting to update the <font color="#000058"><code>Person</code></font> whilst in a view state, confirm this happens.  Ensure you are getting the appropriate exception, if you have made a mistake with your implementation you may well get a <font color="#000058"><code>StackOverflowException</code></font>.
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now modify <font color="#000058"><code>Main</code></font> to call <font color="#000058"><code>Edit</code></font> and <font color="#000058"><code>Commit</code></font> around the calls that modify the person's <font color="#000058"><code>Name</code></font> and <font color="#000058"><code>Age</code></font> properties, and confirm that the code works.
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">There is a possible enhancement that could be made to this solution. The fact that view and edit state share some common implementation suggests that you could define a class that implements that common functionality and have both states then derive from that as opposed from directly deriving from the abstract class. </p></li></ol><h3>Solutions:</h3><div><a href="after\EditablePerson" target="new">Solution</a><br></div><hr><h2> part 2-
+		State Bank</h2><p class="labOverview"><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+          In this part you will take a piece of code that implements a state machine that is using enumerations and lots of if statements and refactor it to use the state pattern.  Hopefully when you look at the code you too will feel it is rather smelly and in desperate need of some refactoring to make it clear what operations are possible in what states.
+        </p></p><h3>steps:</h3><ol><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Open the <a href="before\AccountLifeCycle" target="new">solution</a> and familiarize yourself with the project. Run the project, it should open a form displaying information about a bank account.  If you hit the show workflow button a window will appear describing the possible states the bank account can be in, and what operations are valid in a given state, have a play with the UI validating that the operations you are allowed to do match the state machine in the picture.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Examine the <font color="#000058"><code>BankAccount</code></font> class. This class implements the state machine.  Whilst the code does what it's supposed to do, when you look at it you should see how complicated it is. There are lots of if/else blocks making it hard to see what operations are valid in a given state.  Adding additional states will require modification to the existing logic for all other states.  You would rather have this code rewritten to take advantage of the state pattern, thus allowing you to clearly see what is possible in a given state and also allow you to add new states in the future without the risk of breaking existing code.
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Your first step in refactoring this code is to create the abstract class to represent each state, remembering to:
+            <ol><li><p>
+                  Make the base state class an abstract inner class of <font color="#000058"><code>BankAccount</code></font> in a separate file, taking advantage of partial class functionality
+                </p></li><li><p>
+                  Make the class have a protected field to hold a reference to the <font color="#000058"><code>BankAccount</code></font> instance, and create the necessary constructor required to initialize this field
+                </p></li><li><p>
+                  Add a virtual method for every possible operation, where the implementation of each method simply throws an <font color="#000058"><code>InvalidOperationException</code></font></p></li></ol></p><p id="EAFBAAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EAFBAAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EAFBAAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public abstract class BankAccountState
+{
+	protected BankAccount account;
+
+	protected BankAccountState(BankAccount account)
+	{
+		this.account = account;
+	}
+
+	public virtual void IdentityConfirmed()
+	{
+		throw new InvalidOperationException("Account does not support IdentityConfirmation in current state");
+	}
+
+	public virtual void Credit(decimal amount)
+	{
+		throw new InvalidOperationException("Account does not support Credit in current state");
+	}
+
+	public virtual void Debit(decimal amount)
+	{
+		throw new InvalidOperationException("Account does not support Debit in current state");
+	}
+
+	public virtual void Freeze()
+	{
+		throw new InvalidOperationException("Account does not support Freeze in current state");
+	}
+
+	public virtual void UnFreeze()
+	{
+		throw new InvalidOperationException("Account does not support UnFreeze in current state");
+	}
+
+	public virtual void Close()
+	{
+		throw new InvalidOperationException("Account does not support Close in current state");
+	}
+}</pre></div></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Remove the use of the <font color="#000058"><code>AccountStates</code></font> enumeration to track current state and use a reference to your new state abstract class instead.  Rework all the methods in the <font color="#000058"><code>BankAccount</code></font> class to use this reference to implement the required functionality. (Tip, Comment out the existing functionality you will need it in some form or another later.)
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Modify the <font color="#000058"><code>State</code></font> property on the <font color="#000058"><code>BankAccount</code></font> class to return the current state in terms of the abstract <font color="#000058"><code>State</code></font> class.  Make the <font color="#000058"><code>get</code></font> public, but make the <font color="#000058"><code>set</code></font> private.  This will allow the inner state classes the ability to change state but no one else.
+          </p><div class="divCodeBlock" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public BankAccountState State
+{
+	get { return accountState; }
+	private set
+	{
+		accountState = value;
+		OnPropertyChanged(new PropertyChangedEventArgs("State"));
+	}
+}</pre></div></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now create classes to represent each of the states for a bank account, remembering to derive from the state abstract class. Take the commented out code and place it into the appropriate methods, or encapsulate the functionality inside the <font color="#000058"><code>BankAccount</code></font> class as private methods that you invoke from the state classes.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><img src="StateBank.png"></p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Modify the <font color="#000058"><code>BankAccount</code></font> class to initialize all the states on its creation, and set the initial state to <font color="#000058"><code>ConfirmingIdentity</code></font>. Now run the application assuming everything has been done correctly you should pretty much have  a working application.  Test it out.
+          </p></li><li><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            The only place where things may not quiet go well is if you perform the following steps.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Run the application.
+            Click Confirmed Identity, and then hit Close Account. This will take you to the closing state, but really it should go straight to closed since the balance is zero.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            One way to solve this problem would be to change the logic in every state which moves you into the closing state to check for a balance of zero and if so go straight to closed, but that breaks the finite state machine and means repeating the logic.
+          </p><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Alternatively you can somehow detect the balance is zero on entering the Closing state and if so move to Closed state.  This is a common requirement in finite state to have some code run when you enter or exit a state.  So add two additional virtual methods to the base State class called Enter and Exit
+          </p><div class="divCodeBlock" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public abstract class BankAccountState
+{
+	public virtual void EnterState()
+	{
+		// Called on entry to the state
+	}
+
+	public virtual void LeaveState()
+	{
+		// Called on leaving the state
+	}
+	...
+}</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            The code above provides the appropriate hooks that each state can override in order to be informed when their given state is entered or exited.  All you need to do now is invoke the methods when the state changes, by modifying the setter for the State property on the <font color="#000058"><code>BankAccount</code></font> class.
+          </p><p id="EBABAAAp" style="cursor:pointer" onclick="
+			  expandOrCollapseCodeBlock('EBABAAA');
+			" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><i>click to show code</i></p><div class="divCodeBlock" style="display:none" id="EBABAAA" xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout"><pre>public BankAccountState State
+{
+	get { return accountState; }
+	private set
+	{
+		if (accountState != null)
+		{
+		accountState.LeaveState();
+		}
+
+		accountState = value;
+		OnPropertyChanged(new PropertyChangedEventArgs("State"));
+		accountState.EnterState();
+	}
+}</pre></div><p xmlns:wsu="urn:www.develop.com:terra:xforms:whitespaceUtils" xmlns:pl="urn:www.develop.com:terra:physicalLayout">
+            Now implement the <font color="#000058"><code>EnterState</code></font> method inside your closing state to detect if the <font color="#000058"><code>Balance</code></font> is zero and if so move straight to the closed state.  Re-run the test you did before and you should find it goes straight to Closed State.
+          </p></li></ol><h3>Solutions:</h3><div><a href="after\AccountLifeCycle" target="new">Solution</a><br></div></DIV></td></tr></table></body></html>

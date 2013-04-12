@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cd0a67b9-5880-4b24-b07d-0a5f90f0b176" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9000/PetShop" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PetShop.xsd" MetadataType="Schema" ID="34319413-f908-4675-994f-01b162476de0" SourceId="1" SourceUrl="http://localhost:9000/PetShop?xsd=xsd0" />
+    <MetadataFile FileName="PetShop.wsdl" MetadataType="Wsdl" ID="1efcf505-a9a7-4dd0-9094-28c703aa8291" SourceId="1" SourceUrl="http://localhost:9000/PetShop?wsdl=wsdl0" />
+    <MetadataFile FileName="PetShop.disco" MetadataType="Disco" ID="c586743b-1cbf-425d-bce0-a0658d26af4f" SourceId="1" SourceUrl="http://localhost:9000/PetShop?disco" />
+    <MetadataFile FileName="PetShop1.xsd" MetadataType="Schema" ID="da927919-7645-4049-be90-cabe985628eb" SourceId="1" SourceUrl="http://localhost:9000/PetShop?xsd=xsd1" />
+    <MetadataFile FileName="DM.PetShop.wsdl" MetadataType="Wsdl" ID="40007247-c931-46e7-8f70-4c4f7d458fec" SourceId="1" SourceUrl="http://localhost:9000/PetShop?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

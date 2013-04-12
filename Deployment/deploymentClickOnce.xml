@@ -1,0 +1,348 @@
+<?xml version="1.0" ?>
+
+<p:activity xmlns:p="urn:www.develop.com:terra:activity:v1">
+
+  <name>Deployment</name>
+  <duration>45</duration>
+  <workDir>deployment</workDir>
+
+  <goals>
+    <goal>Deploy assemblies to the Global Assembly Cache (GAC).</goal>
+    <goal>Configure version policy to redirect versions at load-time.</goal>
+    <goal>Configure an application to find assemblies from alternative locations.</goal>
+    <goal>Deploy an application via ClickOnce</goal>
+  </goals>
+
+  <overview>
+    <p>In this activity you will work with the simple Mandelbrot fractal viewer shown below:</p>
+    <p>
+    <image src="fractalexplorer.jpg"/>    
+    </p>
+
+
+    <p>The goal of this activity is to work with field-replacement and version
+    redirection in a semi-realistic environment. In the screenshot above the actual
+    Mandelbrot rendering is performed by a DLL (<strong>DevelopMentor.Mandelbrot.dll</strong>)
+    which is hosted by the application (<strong>FractalExplorer.exe</strong>).  In this
+    activity you will compile FractalExplorer.exe against version <strong>1.0.0.0</strong>
+    of DevelopMentor.Mandelbrot.dll. This code works, but not all that well.  You will find
+    two additional implementations of DevelopMentor.Mandelbrot.dll that enhance the 
+    basic functionality of 1.0.0.0 (exactly how is left to you to discover).  The goal
+    here is to compile the original application and then swap in different implementations
+    of DevelopMentor.Mandelbrot.dll <strong>without recompiling FractalExplorer.exe!</strong> 
+    This is similar to what you might want to do in a production environment where
+    the FractalExplorer has already been deployed and you want to give users the option
+    of updating to the new library.</p>
+
+    <p>The working directory for this exercise is
+       <filelink href="deployment/" target="new">work\deployment\</filelink>. There is 
+       very little code in this activity so there's no need for the usual "before" and
+       "after" directories.  Instead you will be experimenting with deployment and
+       config file settings.</p>
+  </overview>
+
+  <parts>
+
+  <part optional="false">
+    <name>Getting started</name>
+    <description>
+    <p>First you need to get familiar with the application</p>
+    </description>
+
+    <steps>
+    <step>
+    <p>Open <filelink href="deployment/fractalexplorer.sln">FractalExplorer.sln</filelink> in 
+    the <strong>work</strong> directory.  You'll find three projects inside:</p>
+    
+    <p><strong>DevelopMentor.Fractals.DLL</strong> provides basic math support
+    needed for complex number manipulation.</p>
+    <p><strong>Mandel1</strong> provides version 1.0 of the mandelbrot
+    rendering functionality. If you examine the project properties you'll
+    see that this project compiles to a DLL named <strong>DevelopMentor.Mandelbrot.dll</strong></p>
+    <p><strong>FractalExplorer.exe</strong> provides basic window management
+    as well as a dialog box that will display assembly information for all assemblies
+    loaded by the application.</p>
+    </step>
+    
+    <step><p>Compile and run <strong>FractalExplorer.exe</strong> as-is.  Open a few child
+    windows and play with them. You may want to use the <strong>Configuration</strong> button
+    to adjust the <strong>MaxIterations</strong> property - higher values will generate more
+    detail, but will take a correspondingly long time.</p></step>
+    
+    <step><p>Now use <strong>File | Deployment Info...</strong> to bring up a dialog box that
+    displays information about the DLLs that FractalExplore.exe depends on. Pay attention to
+    the <strong>Location</strong> and <strong>Codebase</strong> values as well as the <code>Expected</code>
+    and <code>Loaded</code> values of the loaded assemblies. The most interesting DLL here
+    is <strong>DevelopMentor.Mandelbrot</strong> which should be selected already.</p></step>
+    </steps>
+
+    <solutions>
+    </solutions>
+
+<!--  <samples>
+    <sample>dotnet.runtime.assemblies.CodeBaseRedirect</sample>
+    <sample>dotnet.runtime.assemblies.PrivatePath</sample>
+  </samples> -->
+
+  </part>
+
+  <part optional="false">
+  <name>Deploying to the GAC</name>
+  <description><p>In order to enable easy selection between versions you will now deploy
+  <strong>DevelopMentor.Mandelbrot.dll</strong> to the GAC.</p></description>
+  <steps>
+    <step><p>Bravely try dragging DevelopMentor.Mandelbrot.DLL from the file system to
+    the GAC by dragging it into <strong>c:\windows\assemly</strong> using the shell.  You
+    should get an error saying that the DLL doesn't have a strong name.</p></step>
+    <step><p>
+    So, you need to give a strong name to the <strong>Mandel1</strong> project. You can do this
+    by selecting <code>Mandel1</code> in the Solution Explorer and choosing properties (either
+    via right clicking or via the "Properties" button in the upper left of the Solution Explorer).
+    </p></step>
+    
+    <step><p>
+    Now go to the "Signing" tab and select the "Sign the Assembly" check box.  Click the corresponding
+    combo box and choose "New...".  This will bring a dialog where you can create a new keyfile; use
+    <strong>keys.snk</strong> as the name. You can protect it with a password if you want, but it's not
+    necessary here.
+    </p></step>
+    
+    <step><p>
+    Now try to build the solution. You should see this error:
+    </p>
+    <p type="code">error CS1577: Assembly generation failed -- Referenced assembly 'DevelopMentor.Fractals' does not have a strong name</p>
+    
+    <p>Strongly-named assemblies can only reference other assemblies if they have strong names as well.  So, use
+    the steps outlined above to give a strong name to <code>DevelopMentor.Fractals.dll</code>.  Note that you
+    do <strong>not</strong> need to use the same keyfile - you can generate a second pair of keys for this 
+    DLL if you like.</p>
+    </step>
+        
+    <step><p>
+    Now you are ready to put <code>DevelopMentor.Mandelbrot.DLL</code> into the GAC.  Add it to the GAC
+    and run the application, looking at the assembly info.  You should see a very different location and
+    codebase now for the DLL.
+    </p></step>
+    
+    <step><p>The application you are
+    running may work now, but in general when you put an assembly in the GAC you should put all dependant
+    assemblies in the GAC as well; otherwise other applications would fail if they didn't have 
+    <code>DevelopMentor.Fractals.dll</code> in their local directory. Add <code>DevelopMentor.Fractals.dll</code>
+    to the GAC as well before moving on to the next part.
+    </p></step>
+    
+  </steps>
+  </part>
+
+  <part optional="false">
+  <name>Version redirection</name>
+  <description><p>Now you will experiment with version policy to swap in versions 2.0.0.0
+  and 3.0.0.0 without changing the original EXE.</p></description>
+  <steps>
+    <step><p>
+	To swap in a new version you have to tell the runtime which assembly you're swapping
+	out and which version you want to replace it with.  This is done via config files, so
+	the main thing you'll have to do here is author the appropriate config file.    
+    </p></step>
+
+    <step><p>
+    First things first - you need a new version to swap in. Open <filelink href="deployment/mandel2/mandel2.sln">mandel2.sln</filelink>
+    and build it.  Note that you will need to sign version 2.0.0.0 with the <strong>same</strong>
+    keypair you generated in the previous part of the lab. Add version 2.0.0.0 to the GAC and 
+    verify that the GAC now contains two versions of the <strong>DevelopMentor.Mandelbrot</strong>
+    assembly.
+    </p></step>
+
+    <step><p>
+    Now you need to create a configuration file for FractalExplorer.exe.  The easiest way to 
+    do that for this lab is to reopen <filelink href="deployment/fractalexplorer.sln">FractalExplorer.sln</filelink>
+    and add a config file to the FractalExplore.exe project. (Right click on the project and choose
+    <strong>Add... | New Item</strong> and choose <strong>Application Configuration file</strong>).
+    Using the example in the slides create a config file that redirects the <strong>DevelopMentor.Mandelbrot</strong>
+    assembly to version 2.0.0.0.  (You will need to know the public key token for the key you used
+    to sign the assembly - you can get it by running the application and using the "assembly deployment information"  
+    dialog box).  A sample config file is shown below (note that config files are case-sensitive
+    and very sensitive to XML namespace usage).
+    </p>
+    <p type="code" mode="collapsable">
+    <![CDATA[
+<configuration >
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1" >
+      <dependentAssembly>
+        <assemblyIdentity 
+                name="DevelopMentor.Mandelbrot" 
+                publicKeyToken="be418bc72a93105f" />
+        <bindingRedirect oldVersion="1.0.0.0"
+                             newVersion="2.0.0.0" />
+        </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>
+    
+    ]]>
+    
+    </p>
+    </step>
+
+    <step><p>
+    Now build and run <strong>FractalExplorer.exe</strong> again (note that the only reason to
+    "build" here is to get the app.config file deployed).  If you use File | New to create a new
+    fractal it should look different and behave a bit differently.
+    </p></step>
+  </steps>
+  
+  </part>
+
+
+  <part optional="false">
+    <name>Deploying with ClickOnce</name>
+
+    <description>
+      <p><strong>ClickOnce</strong> makes it easy to deploy applications in an XCOPY fashion,
+      but allows clients to get auto-downloading and auto-updating as well as integration with
+      the Start Menu and the "Add/Remove Programs" dialog. In this section
+      you will deploy your application via ClickOnce.</p>
+    </description>
+
+    <steps>
+      <step>
+      <p>Start by deleting <strong>app.config</strong> so that <strong>FractalExplorer</strong> goes
+      back to using v1.0.0.0 of the Mandelbrot DLL. ClickOnce doesn't support GAC installation, 
+      so version redirection doesn't make sense - if you want a new version of a lib 
+      in your ClickOnce app just publish the new version and clients will download it.</p>
+      </step>
+      <step><p>
+      Next you need to generate an x.509 (Authenticode) certificate for the project.  This will 
+      be used to sign the <strong>manifest</strong> files used by ClickOnce. You can generate a
+      new test certificate on the <strong>Signing</strong> tab of the project properties. Check
+      the <strong>Sign the ClickOnce manifests</strong> checkbox then click 
+      <strong>Create Test Certificate</strong>. This should generate a new file named
+      <strong>FractalExplorer_TemporaryKey.pfx</strong></p>
+      </step>
+      <step>
+      <p>
+      Now use the Publish wizard to do a simple ClickOnce deployment. Start the
+      wizard by choosing <strong>Build | Publish FractalExplorer</strong>.
+      </p>
+      </step>
+      <step>
+      <p>The wizard will suggest a local IIS deployment, just accept the default and 
+      choose <strong>Next &gt; </strong></p>
+      </step>
+      <step>
+      <p>The second step in the wizard asks <strong>Will the application be available offline?</strong>
+      Go ahead and accept the default (yes) and continue.</p>
+      </step>
+      <step>
+      <p>Press Finish to kick off the deploy. The application will build
+      and files will be pushed out to a virtual directory called <strong>FractalExplorer</strong>.
+      Once the wizard is done it will launch IE, which should look about like this:</p>
+      <p><image src="publish.jpg"></image></p>
+      </step>
+      <step>
+      <p>Open <strong>c:\inetpub\wwwroot\FractalExplorer</strong> and examine the files there. In particular
+      you should look for <strong>FractalExplorer.Application</strong> and 
+      <strong>FractalExplorer.Manifest</strong>. Inspect these files just to get a
+      sense of them (probably the easiest thing to do is to copy the files and give them
+      a <strong>.xml</strong> extension, then view them in IE).</p>
+      </step>
+    </steps>
+    
+  </part>
+
+  <part optional="true">
+    <name>Installing ClickOnce Applications on a client</name>
+
+    <description>
+      <p>Now you will see the client side of ClickOnce installation.</p>
+    </description>
+
+    <steps>
+      <step>
+        <p>To install a ClickOnce application you surf to the <strong>application manifest (.application)</strong>
+        file. Since you already have <strong>publish.htm</strong> up you can just click on the <strong>Install</strong>
+        button.</p>
+      </step>
+      <step>
+        <p>You should get prompted with a warning that <strong>Publisher cannot be verified</strong>. This is because
+        the app has been signed with a temporary X.509 test certificate and not a "real" certificate.  If you click
+        on <strong>"More Information..."</strong> you should see that the application is asking for FullTrust which is 
+        a bit silly for this application.  Nevertheless you should be able to click "OK" and the app will install and
+        run.  You should also see a new Start menu item that you can use to launch the application. Try closing and 
+        running the application from the start menu.
+        </p>
+      </step>
+      
+      <step>
+        <p>
+        Verify that the application files were downloaded by looking in 
+        <strong>%userprofile%\Local Settings\Apps</strong>.
+        Can you find your application files?
+        </p>
+      </step>
+    </steps>
+  </part>
+
+  <part optional="true">
+    <name>Deploying a new version</name>
+
+    <description>
+      <p>Now that your app is installed and your clients have subscribed you can push out a new
+      version</p>
+    </description>
+
+    <steps>
+      <step>
+        <p>Remove the <strong>Mandel1</strong> reference from the  <code>FractalExplorer</code> project. 
+        Add <strong>Mandel3</strong> to your solution and reference it from FractalExplorer. Run it
+        in the debugger and verify that version 3.0.0.0 runs.</p>
+      </step>
+      <step>
+      <p>Publish the application again but <strong>do not click "install" on publish.htm</strong>. Instead
+      just run the application from the <strong>Start</strong> menu.  What happens?</p>
+      </step>
+    </steps>
+  </part>
+  
+  
+  <part optional="true">
+    <name>Uninstalling ClickOnce Applications</name>
+
+    <description>
+      <p>ClickOnce-deployed applications can be reverted to a previous state or uninstalled from the Control Panel.</p>
+    </description>
+
+    <steps>
+      <step>
+        <p>ClickOnce-deployed apps can be uninstalled from Control Panel. 
+        Uninstall the application using the familiar <strong>Add or Remove Programs</strong> dialog.  Verify that doing so deletes the files in 
+        <strong>%userprofile%\Local Settings\Apps</strong>.</p>
+      </step>
+    </steps>
+  </part>
+  
+  </parts>
+
+
+
+<!--
+  <samples>
+    <sample>dotnet.runtime.assemblies.policy</sample>
+  </samples>
+-->
+
+<!--
+  <howtos>
+    <howto>dotnet.runtime.delegates.DefineADelegate</howto>
+  </howtos>
+
+  <samples>
+    <sample>dotnet.runtime.value-types.structfun</sample>
+  </samples>
+-->
+
+  <quizzes>
+    <quiz>dotnet.runtime.assemblies-overview</quiz>
+  </quizzes>  
+</p:activity>

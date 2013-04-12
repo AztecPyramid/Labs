@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandel3", "Mandel3.csproj", "{D3D3032D-BE43-43A3-9A7F-DCABFDAEB892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopMentor.Fractals", "..\DevelopMentor.Fractals\DevelopMentor.Fractals.csproj", "{B6C9BE13-B270-4030-BDAE-15ABF7F39E68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3D3032D-BE43-43A3-9A7F-DCABFDAEB892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D3032D-BE43-43A3-9A7F-DCABFDAEB892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D3032D-BE43-43A3-9A7F-DCABFDAEB892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D3032D-BE43-43A3-9A7F-DCABFDAEB892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C9BE13-B270-4030-BDAE-15ABF7F39E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C9BE13-B270-4030-BDAE-15ABF7F39E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C9BE13-B270-4030-BDAE-15ABF7F39E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C9BE13-B270-4030-BDAE-15ABF7F39E68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
