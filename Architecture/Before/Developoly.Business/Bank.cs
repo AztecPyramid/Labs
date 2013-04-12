@@ -40,6 +40,9 @@ namespace Developoly.Business
 
 		public GameEnum PurchaseProperty(int propertyId, Player currentPlayer)
 		{
+
+            // adding a comment to see if it goes to github
+
 			if (System.Convert.IsDBNull( _properties.Rows[propertyId][owner]) == false)
 			{
 				if ((string)_properties.Rows[propertyId][owner] == currentPlayer.ID)
