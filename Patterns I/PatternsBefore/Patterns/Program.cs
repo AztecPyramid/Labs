@@ -11,6 +11,9 @@ namespace Patterns
         {
             CheckingAccount a = new CheckingAccount();
 
+            // this is a comment to see if we can commit to github
+
+
             a.DepositAction += new AccountAction(a_DepositAction);
             a.WithdrawAction += (amount, balance) => { if (balance <= 0) Console.Write("Balance is at or below zero!"); };
 
